@@ -8,6 +8,7 @@
     <h2>Welcome, {{ Auth::guard('admin')->user()->name }}!</h2>
 
     <p>This is the Admin Dashboard.</p>
+    <p><a href="{{ route('elections.index') }}">Manage Elections</a></p>
 
     <form action="/admin/logout" method="POST">
         @csrf
