@@ -13,14 +13,14 @@ class CandidateController extends Controller
     public function index()
     {
         $candidates = Candidate::with('election')->get(); // 'with' se election ka data bhi sath mein utha lete hain (1 hi query mein)
-        return view('admin.candidates.index', compact('candidates'));
+        return view('candidates.index', compact('candidates'));
     }
 
     // Naya candidate add karne ka form
     public function create()
     {
         $elections = Election::all(); // Dropdown mein dikhane ke liye saari elections chahiye
-        return view('admin.candidates.create', compact('elections'));
+        return view('candidates.create', compact('elections'));
     }
 
     // Form submit hone par candidate save karna
@@ -51,7 +51,7 @@ class CandidateController extends Controller
     public function edit(Candidate $candidate)
     {
         $elections = Election::all();
-        return view('admin.candidates.edit', compact('candidate', 'elections'));
+        return view('candidates.edit', compact('candidate', 'elections'));
     }
 
     // Edit form submit hona
