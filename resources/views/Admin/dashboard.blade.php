@@ -9,6 +9,7 @@
 
     <p>This is the Admin Dashboard.</p>
     <p><a href="{{ route('elections.index') }}">Manage Elections</a></p>
+    <p><a href="{{ route('candidates.index') }}">Manage Candidates</a></p>
 
     <form action="/admin/logout" method="POST">
         @csrf

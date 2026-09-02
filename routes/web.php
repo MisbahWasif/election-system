@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController; // Humara AdminController import kar rahe hain
 use App\Http\Controllers\ElectionController;
+use App\Http\Controllers\CandidateController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,6 +19,7 @@ Route::post('/admin/register', [AdminController::class, 'register']);
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login']);
 
+
 // Dashboard (sirf logged-in admin access kar sake)
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -29,4 +31,11 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('/elections', [ElectionController::class, 'store'])->name('elections.store');
     Route::put('/elections/{election}/status', [ElectionController::class, 'updateStatus'])->name('elections.updateStatus');
     Route::delete('/elections/{election}', [ElectionController::class, 'destroy'])->name('elections.destroy');
+    // ================= CANDIDATE ROUTES =================
+Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
+Route::get('/candidates/create', [CandidateController::class, 'create'])->name('candidates.create');
+Route::post('/candidates', [CandidateController::class, 'store'])->name('candidates.store');
+Route::get('/candidates/{candidate}/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
+Route::put('/candidates/{candidate}', [CandidateController::class, 'update'])->name('candidates.update');
+Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidates.destroy');
 });
