@@ -10,12 +10,12 @@ class ElectionController extends Controller
     public function index()
     {
         $elections = Election::all();
-        return view('admin.elections.index', compact('elections'));
+        return view('elections.index', compact('elections'));
     }
 
     public function create()
     {
-        return view('admin.elections.create');
+        return view('elections.create');
     }
 
     public function store(Request $request)
