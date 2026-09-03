@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController; // Humara AdminController import kar r
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\VoterController;
+use App\Http\Controllers\VoteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,4 +51,9 @@ Route::post('/voter/login', [VoterController::class, 'login']);
 Route::middleware('auth:voter')->group(function () {
     Route::get('/voter/dashboard', [VoterController::class, 'dashboard'])->name('voter.dashboard');
     Route::post('/voter/logout', [VoterController::class, 'logout'])->name('voter.logout');
+
+    // ================= VOTING ROUTES =================
+    Route::get('/vote', [VoteController::class, 'index'])->name('vote.index');
+    Route::get('/vote/{election}', [VoteController::class, 'showCandidates'])->name('vote.candidates');
+    Route::post('/vote/{election}', [VoteController::class, 'castVote'])->name('vote.cast');
 });
