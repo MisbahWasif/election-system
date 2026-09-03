@@ -20,4 +20,9 @@ class Candidate extends Model
     {
         return $this->belongsTo(Election::class);
     }
+// Ek Candidate ke multiple Votes ho sakte hain
+public function votes()
+{
+    return $this->hasMany(Vote::class);
+}
 }

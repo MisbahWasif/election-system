@@ -6,6 +6,7 @@ use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\VoterController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\ResultController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,6 +41,9 @@ Route::post('/candidates', [CandidateController::class, 'store'])->name('candida
 Route::get('/candidates/{candidate}/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
 Route::put('/candidates/{candidate}', [CandidateController::class, 'update'])->name('candidates.update');
 Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidates.destroy');
+// ================= RESULT ROUTES =================
+Route::get('/results', [ResultController::class, 'index'])->name('results.index');
+Route::get('/results/{election}', [ResultController::class, 'show'])->name('results.show');
 });
 // ================= VOTER ROUTES =================
 Route::get('/voter/register', [VoterController::class, 'showRegisterForm'])->name('voter.register');
