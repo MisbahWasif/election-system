@@ -47,8 +47,12 @@ return [
         'driver' => 'session',
         'provider' => 'admins',
     ],
-],
 
+    'voter' => [
+        'driver' => 'session',
+        'provider' => 'voters',
+    ],
+],
     'providers' => [
     'users' => [
         'driver' => 'eloquent',
@@ -58,6 +62,11 @@ return [
     'admins' => [
         'driver' => 'eloquent',
         'model' => App\Models\Admin::class,
+    ],
+
+    'voters' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Voter::class,
     ],
 ],
 

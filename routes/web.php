@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController; // Humara AdminController import kar rahe hain
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\VoterController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,4 +39,15 @@ Route::post('/candidates', [CandidateController::class, 'store'])->name('candida
 Route::get('/candidates/{candidate}/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
 Route::put('/candidates/{candidate}', [CandidateController::class, 'update'])->name('candidates.update');
 Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidates.destroy');
+});
+// ================= VOTER ROUTES =================
+Route::get('/voter/register', [VoterController::class, 'showRegisterForm'])->name('voter.register');
+Route::post('/voter/register', [VoterController::class, 'register']);
+
+Route::get('/voter/login', [VoterController::class, 'showLoginForm'])->name('voter.login');
+Route::post('/voter/login', [VoterController::class, 'login']);
+
+Route::middleware('auth:voter')->group(function () {
+    Route::get('/voter/dashboard', [VoterController::class, 'dashboard'])->name('voter.dashboard');
+    Route::post('/voter/logout', [VoterController::class, 'logout'])->name('voter.logout');
 });
