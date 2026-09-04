@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Manage Candidates</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
     <h2>All Candidates</h2>
 
@@ -44,5 +43,6 @@
         @endforeach
     </table>
 
-</body>
-</html>
+</div>
+
+@endsection

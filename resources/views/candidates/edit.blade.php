@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Candidate</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div style="padding: 40px 20px; max-width: 500px; margin: 0 auto;">
 
     <h2>Edit Candidate</h2>
 
@@ -47,5 +46,6 @@
 
     <a href="{{ route('candidates.index') }}">Back to Candidates List</a>
 
-</body>
-</html>
+</div>
+
+@endsection

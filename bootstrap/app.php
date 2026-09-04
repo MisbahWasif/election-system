@@ -11,7 +11,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->redirectGuestsTo(function ($request) {
+            if ($request->is('admin/*') || $request->is('elections*') || $request->is('candidates*') || $request->is('results*')) {
+                return route('admin.login');
+            }
+
+            return route('voter.login');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

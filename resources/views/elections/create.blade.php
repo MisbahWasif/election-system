@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Election</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div style="padding: 40px 20px; max-width: 500px; margin: 0 auto;">
 
     <h2>Create New Election</h2>
 
@@ -34,5 +33,6 @@
 
     <a href="{{ route('elections.index') }}">Back to Elections List</a>
 
-</body>
-</html>
+</div>
+
+@endsection

@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Manage Elections</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
     <h2>All Elections</h2>
 
@@ -30,7 +29,6 @@
             <td>{{ $election->start_date }}</td>
             <td>{{ $election->end_date }}</td>
             <td>
-                {{-- Status change karne ka form --}}
                 <form action="{{ route('elections.updateStatus', $election->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('PUT')
@@ -41,7 +39,6 @@
                     </select>
                 </form>
 
-                {{-- Delete karne ka form --}}
                 <form action="{{ route('elections.destroy', $election->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
@@ -52,5 +49,6 @@
         @endforeach
     </table>
 
-</body>
-</html>
+</div>
+
+@endsection
