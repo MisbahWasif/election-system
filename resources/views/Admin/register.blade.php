@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Register</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div style="padding: 60px 20px; max-width: 500px; margin: 0 auto;">
 
     <h2>Admin Registration</h2>
 
@@ -43,5 +42,6 @@
 
     <p>Already have an account? <a href="/admin/login">Login here</a></p>
 
-</body>
-</html>
+</div>
+
+@endsection

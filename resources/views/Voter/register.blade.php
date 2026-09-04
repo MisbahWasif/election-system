@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Voter Register</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div style="padding: 60px 20px; max-width: 500px; margin: 0 auto;">
 
     <h2>Voter Registration</h2>
 
@@ -43,5 +42,6 @@
 
     <p>Already have an account? <a href="/voter/login">Login here</a></p>
 
-</body>
-</html>
+</div>
+
+@endsection

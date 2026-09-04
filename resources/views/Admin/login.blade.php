@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Login</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div style="padding: 60px 20px; max-width: 500px; margin: 0 auto;">
 
     <h2>Admin Login</h2>
 
     @if (session('success'))
-        <div style="color: green;">
-            {{ session('success') }}
-        </div>
+        <div style="color: green;">{{ session('success') }}</div>
     @endif
 
     @if ($errors->any())
@@ -34,8 +31,6 @@
 
         <button type="submit">Login</button>
     </form>
+</div>
 
-    <p>Don't have an account? <a href="/admin/register">Register here</a></p>
-
-</body>
-</html>
+@endsection

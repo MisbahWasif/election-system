@@ -9,14 +9,9 @@ use App\Http\Controllers\VoteController;
 use App\Http\Controllers\ResultController;
 
 Route::get('/', function () {
-    return view('welcome');
-    
-});
+    return view('frontend.home');
+})->name('home');
 // ================= ADMIN ROUTES =================
-
-// Register
-Route::get('/admin/register', [AdminController::class, 'showRegisterForm'])->name('admin.register');
-Route::post('/admin/register', [AdminController::class, 'register']);
 
 // Login
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
@@ -27,6 +22,9 @@ Route::post('/admin/login', [AdminController::class, 'login']);
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    // Ab yahan register bhi aa gaya — sirf logged-in Admin access kar sakta hai
+    Route::get('/admin/register', [AdminController::class, 'showRegisterForm'])->name('admin.register');
+    Route::post('/admin/register', [AdminController::class, 'register']);
 
     // ================= ELECTION ROUTES =================
     Route::get('/elections', [ElectionController::class, 'index'])->name('elections.index');
@@ -61,3 +59,15 @@ Route::middleware('auth:voter')->group(function () {
     Route::get('/vote/{election}', [VoteController::class, 'showCandidates'])->name('vote.candidates');
     Route::post('/vote/{election}', [VoteController::class, 'castVote'])->name('vote.cast');
 });
+// ================= PUBLIC FRONTEND ROUTES =================
+Route::get('/about', function () {
+    return view('frontend.about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+})->name('contact');
+
+Route::get('/elections-list', [VoteController::class, 'index'])->name('election');
+Route::get('/candidates-list', [VoteController::class, 'index'])->name('candidate');
+Route::get('/public-results', [ResultController::class, 'index'])->name('result');

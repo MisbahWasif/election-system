@@ -84,6 +84,6 @@ class AdminController extends Controller
         $request->session()->invalidate(); // Purani session khatam karo
         $request->session()->regenerateToken(); // CSRF token naya banao (security)
 
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.dashboard')->with('success', 'New admin added successfully!');
     }
 }

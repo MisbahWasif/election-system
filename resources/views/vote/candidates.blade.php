@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cast Your Vote</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div class="banner-img">
+    <img src="{{ asset('images/cand.jpg') }}">
+</div>
+
+<div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
     <h2>Vote for: {{ $election->title }}</h2>
 
@@ -38,5 +41,6 @@
 
     <a href="{{ route('vote.index') }}">Back to Elections List</a>
 
-</body>
-</html>
+</div>
+
+@endsection

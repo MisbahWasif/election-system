@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Vote</title>
-</head>
-<body>
+@extends('frontend.layout.app')
+
+@section('content')
+
+<div class="banner-img">
+    <img src="{{ asset('images/elec.jpg') }}">
+</div>
+
+<div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
     <h2>Active Elections</h2>
 
@@ -30,5 +33,6 @@
         @endforeach
     </ul>
 
-</body>
-</html>
+</div>
+
+@endsection
